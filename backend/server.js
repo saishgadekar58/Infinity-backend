@@ -23,18 +23,6 @@ mongoose
     console.error(error);
   });
 const port = process.env.PORT;
-app.get("/", (req, res) => {
-  res.send("hello im working");
-});
-
-app.use("/api/users", userRouter);
-app.use("/api/products", productRouter);
-app.use("/api/orders", orderRouter);
-
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-  next();
-});
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join("client/build")));
   app.get("*", (req, res) => {
@@ -42,10 +30,19 @@ if (process.env.NODE_ENV === "production") {
   });
   // app.use(express.dtatic("/client/build"));
 }
+// app.get("/", (req, res) => {
+//   res.send("hello im working");
+// });
 
-app.get("/api/config/paypal", (req, res) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || "sb");
+app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+app.use("/api/orders", orderRouter);
+app.use("/api/config", payRouter);
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+  next();
 });
+
 app.listen(port, () => {
   console.log(`running at ${port}`);
 });
