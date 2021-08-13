@@ -5,6 +5,7 @@ import path from "path";
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
+import payRouter from "./routers/payRouter.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -28,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-  // app.use(express.dtatic("/client/build"));
+  // app.use(express.static("/client/build"));
 }
 // app.get("/", (req, res) => {
 //   res.send("hello im working");
