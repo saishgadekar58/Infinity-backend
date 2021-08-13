@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "description": "ecommerce-site",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server",
+    "start": "node backend/server.js",
     "server": "nodemon backend/server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\"\"npm run client\"",
