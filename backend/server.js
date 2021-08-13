@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
+const __dirname = path.resolve();
 // const path = require("path");
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/client/build")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
   // app.use(express.static("/client/build"));
 } else {
