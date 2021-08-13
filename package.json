@@ -1,24 +1,30 @@
 {
-  "name": "amazona",
+  "name": "infinity-shop",
   "type": "module",
   "version": "1.0.0",
   "description": "ecommerce-site",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec node  backend/server.js"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\"\"npm run client\"",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saishgadekar58/infinty-full-app.git"
+    "url": "git+https://github.com/saishgadekar58/Infinity-Shop.git"
   },
   "author": "saish gadekar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/saishgadekar58/infinty-full-app/issues"
+    "url": "https://github.com/saishgadekar58/Infinity-Shop/issues"
   },
-  "homepage": "https://github.com/saishgadekar58/infinty-full-app#readme",
+  "homepage": "https://github.com/saishgadekar58/Infinity-Shop#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
