@@ -23,6 +23,9 @@ mongoose
     console.error(error);
   });
 const port = process.env.PORT;
+app.get("/", (req, res) => {
+  res.send("hello im working");
+});
 
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
